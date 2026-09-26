@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#5b6fd8">
+  <meta name="description" content="Tutoriel pas à pas pour créer une campagne d'évaluation dans Pix Orga (interface rentrée 2026), diffuser le code aux élèves et suivre les résultats.">
+  <title>Créer une campagne Pix</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a class="skip" href="#contenu">Aller au contenu</a>
+
+<header class="topbar">
+  <div class="progress" aria-hidden="true"><span id="progress-fill"></span></div>
+  <div class="topbar-row">
+    <button type="button" class="icon-btn" id="btn-sommaire" aria-haspopup="dialog" aria-controls="sommaire">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <span>Sommaire</span>
+    </button>
+    <p class="topbar-title"><span id="chapitre">Tutoriel</span> · <span id="compteur">1 / 12</span></p>
+  </div>
+</header>
+
+<main id="contenu" class="steps" aria-live="polite">
+
+  <!-- ÉTAPE 1 : COUVERTURE -->
+  <section class="step step-cover" id="etape-1" data-chapitre="Bienvenue">
+    <div class="cover">
+      <p class="badge">Interface Pix Orga · rentrée 2026</p>
+      <h1>Créer une campagne Pix</h1>
+      <p class="lead">Le pas à pas pour lancer un parcours à vos élèves, récupérer le code et suivre leurs résultats.</p>
+      <ul class="cover-meta">
+        <li>⏱️ 5 minutes de lecture</li>
+        <li>📱 12 écrans, avancez avec « Suivant »</li>
+        <li>💻 Réalisable sur l'ordinateur de la salle des profs</li>
+      </ul>
+      <div class="cover-chapters">
+        <a href="#etape-2"><span>1</span> Préparer</a>
+        <a href="#etape-4"><span>2</span> Créer la campagne</a>
+        <a href="#etape-9"><span>3</span> Diffuser et suivre</a>
+      </div>
+      <a class="btn btn-primary btn-big" href="#etape-2">Commencer</a>
+    </div>
+  </section>
+
+  <!-- ÉTAPE 2 : PRÉREQUIS -->
+  <section class="step" id="etape-2" data-chapitre="1 · Préparer">
+    <h2>Avant de commencer</h2>
+    <p>Trois choses à vérifier, sinon les élèves ne pourront pas rejoindre votre campagne.</p>
+    <ul class="checklist">
+      <li>
+        <strong>Vous avez un accès à Pix Orga.</strong>
+        L'invitation est envoyée par l'administrateur Pix Orga du collège (le référent numérique). Si vous n'avez rien reçu, demandez-lui.
+      </li>
+      <li>
+        <strong>Les élèves sont importés dans Pix Orga.</strong>
+        C'est fait par l'administrateur depuis la base SIECLE en début d'année. Vous les voyez dans l'onglet « Élèves ».
+      </li>
+      <li>
+        <strong>Les élèves se sont connectés une première fois à Pix</strong> via le Médiacentre de MBN. Cette première connexion relie leur compte à leur fiche élève.
+      </li>
+    </ul>
+    <div class="tip">
+      <p class="tip-title">📅 Calendrier 2026-2027 au collège</p>
+      <ul>
+        <li>Parcours de rentrée 5e, 4e, 3e : avant le <strong>17 octobre 2026</strong> (vacances d'automne).</li>
+        <li>Parcours IA obligatoires en 4e : toute l'année, en classe.</li>
+        <li>Certification 3e : du <strong>15 mars au 11 juin 2027</strong>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ÉTAPE 3 : SE CONNECTER ET LANCER -->
+  <section class="step" id="etape-3" data-chapitre="1 · Préparer">
+    <h2>Se connecter et lancer la création</h2>
+    <p>Rendez-vous sur <strong>orga.pix.fr</strong> avec votre adresse académique. Sur la page d'accueil, cliquez sur <strong>« Nouvelle campagne »</strong>.</p>
+
+    <div class="mock" data-anim>
+      <div class="mock-app">
+        <aside class="mock-sidebar">
+          <div class="mock-logo">pix <span>ORGA</span></div>
+          <ul>
+            <li class="active">🏠 Accueil</li>
+            <li>📖 Catalogue</li>
+            <li>📣 Campagnes</li>
+            <li>🎓 Certifications</li>
+            <li>👤 Élèves</li>
+          </ul>
+        </aside>
+        <div class="mock-content">
+          <p class="mock-h">Bonjour,</p>
+          <p class="mock-small">Bienvenue sur votre plateforme d'évaluation des compétences numériques.</p>
+          <div class="mock-card">
+            <p class="mock-card-title">Créer une campagne</p>
+            <p class="mock-small">Choisissez le parcours sur lequel évaluer vos participants.</p>
+            <span class="mock-btn mock-btn-outline anim-highlight">Nouvelle campagne</span>
+          </div>
+          <div class="mock-card">
+            <p class="mock-card-title">Suivre l'activité</p>
+            <span class="mock-btn mock-btn-outline">Voir mes campagnes</span>
+          </div>
+        </div>
+      </div>
+      <span class="tap" style="--x:68%;--y:52%"></span>
+    </div>
+    <button type="button" class="btn btn-ghost replay" hidden>↻ Revoir l'animation</button>
+
+    <div class="tip">
+      <p class="tip-title">💡 Autre chemin</p>
+      <p>Onglet <strong>Campagnes</strong> dans le menu de gauche, puis bouton <strong>« Créer une campagne »</strong>. On arrive au même endroit.</p>
+    </div>
+  </section>
+
+  <!-- ÉTAPE 4 : OBJECTIF -->
+  <section class="step" id="etape-4" data-chapitre="2 · Créer la campagne">
+    <h2>Choisir l'objectif</h2>
+    <p>Pix Orga vous demande d'abord <em>pourquoi</em> vous créez la campagne. Pour un parcours classique, cochez <strong>« Évaluer les participants »</strong>.</p>
+
+    <div class="mock" data-anim>
+      <div class="mock-form">
+        <p class="mock-h">Création d'une campagne</p>
+        <p class="mock-label">Quel est l'objectif de votre campagne ? <span class="req">*</span></p>
+        <label class="mock-radio anim-check"><span class="radio"></span> Évaluer les participants</label>
+        <label class="mock-radio"><span class="radio"></span> Développer les compétences des participants</label>
+        <label class="mock-radio"><span class="radio"></span> Collecter les profils Pix des participants</label>
+        <div class="mock-actions">
+          <span class="mock-btn mock-btn-outline">Annuler</span>
+          <span class="mock-btn anim-enable">Créer la campagne</span>
+        </div>
+      </div>
+      <span class="tap" style="--x:12%;--y:38%"></span>
+    </div>
+    <button type="button" class="btn btn-ghost replay" hidden>↻ Revoir l'animation</button>
+
+    <details class="more">
+      <summary>Les deux autres objectifs, en bref</summary>
+      <ul>
+        <li><strong>Développer les compétences</strong> : campagne de « parcours apprenant ». C'est ce type qui sert pour les deux parcours IA obligatoires en 4e (diagnostic, modules, évaluation finale).</li>
+        <li><strong>Collecter les profils Pix</strong> : les élèves envoient leur profil complet. Utile avant la certification en 3e.</li>
+      </ul>
+    </details>
+  </section>
+
+  <!-- ÉTAPE 5 : CATALOGUE -->
+  <section class="step" id="etape-5" data-chapitre="2 · Créer la campagne">
+    <h2>Trouver le parcours dans le catalogue</h2>
+    <p>Le catalogue s'ouvre. Filtrez pour aller vite : onglet <strong>Évaluation</strong>, puis la catégorie <strong>Disciplinaires</strong>, ou tapez un mot dans la recherche.</p>
+
+    <div class="mock" data-anim>
+      <div class="mock-catalog">
+        <div class="mock-tabs">
+          <span>Tous</span><span class="active">Évaluation</span><span>Apprentissage</span>
+        </div>
+        <div class="mock-filters">
+          <span class="mock-input anim-type" data-text="Cycle 4">🔍 <i class="typed"></i></span>
+          <span class="mock-select">Disciplinaires ▾</span>
+        </div>
+        <div class="mock-cards">
+          <div class="mock-pcard anim-pop" style="--i:1"><span class="chip">Parcours d'évaluation</span><b>[CLG] SVT - Cycle 4</b><small>21 sujets</small></div>
+          <div class="mock-pcard anim-pop" style="--i:2"><span class="chip">Parcours d'évaluation</span><b>[CLG] Français - Cycle 4</b><small>17 sujets</small></div>
+          <div class="mock-pcard anim-pop" style="--i:3"><span class="chip">Parcours d'évaluation</span><b>[CLG] Mathématiques - Cycle 4</b><small>14 sujets</small></div>
+          <div class="mock-pcard anim-pop" style="--i:4"><span class="chip">Parcours d'évaluation</span><b>[CLG] Technologie - cycle 4</b><small>15 sujets</small></div>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="btn btn-ghost replay" hidden>↻ Revoir l'animation</button>
+
+    <div class="tip">
+      <p class="tip-title">🧭 Se repérer dans les noms</p>
+      <ul>
+        <li><strong>[CLG]</strong> = parcours pour le collège. Ignorez les [LGT] et [LP].</li>
+        <li><strong>Parcours de rentrée 5e / 4e / 3e</strong> : ceux à lancer en début d'année, en vie de classe ou dans votre discipline.</li>
+        <li><strong>Disciplinaires</strong> : un parcours par matière (SVT, Maths, Français…), pratique pour votre cours.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ÉTAPE 6 : FICHE PARCOURS -->
+  <section class="step" id="etape-6" data-chapitre="2 · Créer la campagne">
+    <h2>Vérifier le contenu, puis sélectionner</h2>
+    <p>Un clic sur une carte ouvre sa fiche : les sujets travaillés et le niveau maximum de chacun. Si ça vous convient, cliquez sur <strong>« Sélectionner ce parcours »</strong>.</p>
+
+    <div class="mock" data-anim>
+      <div class="mock-sheet">
+        <div class="mock-sheet-left">
+          <span class="chip">Parcours d'évaluation</span>
+          <b>[CLG] SVT - Cycle 4</b>
+          <small>Indépendant · Accès avec compte</small>
+          <span class="mock-btn anim-highlight">Sélectionner ce parcours</span>
+        </div>
+        <div class="mock-sheet-right">
+          <p class="mock-small"><b>Contenu du parcours</b></p>
+          <p class="mock-comp">Compétence 1.1 · Mener une recherche</p>
+          <div class="mock-row"><span>Moteur de recherche</span><b>4</b></div>
+          <div class="mock-row"><span>Fiabilité d'une source</span><b>3</b></div>
+          <p class="mock-comp">Compétence 3.1 · Développer des documents textuels</p>
+          <div class="mock-row"><span>Tableur</span><b>4</b></div>
+          <div class="mock-row"><span>Représentation graphique</span><b>4</b></div>
+        </div>
+      </div>
+      <span class="tap" style="--x:28%;--y:70%"></span>
+    </div>
+    <button type="button" class="btn btn-ghost replay" hidden>↻ Revoir l'animation</button>
+
+    <div class="tip">
+      <p class="tip-title">💡 Bon à savoir</p>
+      <p>Le niveau maximum (1 à 8) est celui que l'élève peut atteindre sur ce sujet. Au collège, viser 3 ou 4 est déjà très bien.</p>
+    </div>
+  </section>
+
+  <!-- ÉTAPE 7 : PARAMÉTRAGE -->
+  <section class="step" id="etape-7" data-chapitre="2 · Créer la campagne">
+    <h2>Paramétrer la campagne</h2>
+    <p>Donnez un nom clair (il n'est visible que par vous) et laissez les deux options sur <strong>Non</strong> dans la plupart des cas.</p>
+
+    <div class="mock" data-anim>
+      <div class="mock-form">
+        <p class="mock-h">Paramétrage</p>
+        <p class="mock-label">Nom de la campagne <span class="req">*</span></p>
+        <span class="mock-input anim-type" data-text="SVT 4e - Parcours de rentrée"><i class="typed"></i></span>
+        <p class="mock-label">Propriétaire de la campagne <span class="req">*</span></p>
+        <span class="mock-select">Vous (pré-rempli) ▾</span>
+        <p class="mock-label">Permettre aux participants d'envoyer plusieurs fois leurs résultats ? <span class="req">*</span></p>
+        <label class="mock-radio checked"><span class="radio"></span> Non</label>
+        <label class="mock-radio"><span class="radio"></span> Oui</label>
+        <p class="mock-label">Demander un identifiant complémentaire ?</p>
+        <label class="mock-radio checked"><span class="radio"></span> Non</label>
+        <label class="mock-radio"><span class="radio"></span> Oui</label>
+      </div>
+    </div>
+    <button type="button" class="btn btn-ghost replay" hidden>↻ Revoir l'animation</button>
+
+    <details class="more">
+      <summary>À quoi servent ces deux options ?</summary>
+      <ul>
+        <li><strong>Envoi multiple</strong> : si Oui, l'élève peut refaire le parcours et renvoyer ses résultats. Pratique pour un parcours d'entraînement, inutile pour une évaluation.</li>
+        <li><strong>Identifiant complémentaire</strong> : demande une information de votre choix à l'élève au début (par exemple sa classe). Inutile au collège, les élèves importés sont déjà rattachés à leur classe.</li>
+      </ul>
+    </details>
+    <div class="tip">
+      <p class="tip-title">✏️ Nommer pour s'y retrouver</p>
+      <p>Mettez la matière, le niveau et l'année : « SVT 4e - Rentrée 2026 ». Vous en aurez plusieurs à la longue.</p>
+    </div>
+  </section>
+
+  <!-- ÉTAPE 8 : PERSONNALISATION ET CRÉATION -->
+  <section class="step" id="etape-8" data-chapitre="2 · Créer la campagne">
+    <h2>Personnaliser (facultatif) et créer</h2>
+    <p>Ces deux champs sont vus par les élèves. Vous pouvez les laisser vides. Puis cliquez sur <strong>« Créer la campagne »</strong>.</p>
+
+    <div class="mock" data-anim>
+      <div class="mock-form">
+        <p class="mock-h">Personnalisation</p>
+        <p class="mock-label">Titre du parcours <small>affiché aux participants</small></p>
+        <span class="mock-input anim-type" data-text="Parcours SVT 4e"><i class="typed"></i></span>
+        <p class="mock-label">Texte de la page d'accueil <small>affiché aux participants</small></p>
+        <span class="mock-input mock-textarea anim-type" data-text="Réponds seul·e et sans stress." data-delay="1.6s"><i class="typed"></i></span>
+        <div class="mock-actions">
+          <span class="mock-btn mock-btn-outline">Annuler</span>
+          <span class="mock-btn anim-highlight" style="--delay:3.4s">Créer la campagne</span>
+        </div>
+      </div>
+      <span class="tap" style="--x:74%;--y:88%;--delay:3.6s"></span>
+    </div>
+    <button type="button" class="btn btn-ghost replay" hidden>↻ Revoir l'animation</button>
+  </section>
+
+  <!-- ÉTAPE 9 : LE CODE -->
+  <section class="step" id="etape-9" data-chapitre="3 · Diffuser et suivre">
+    <h2>Récupérer le code de campagne</h2>
+    <p>La campagne est créée. Son <strong>code</strong> apparaît en haut à droite de sa page. C'est la seule chose dont les élèves ont besoin.</p>
+
+    <div class="mock" data-anim>
+      <div class="mock-campaign">
+        <div class="mock-campaign-head">
+          <b>Parcours SVT 4e</b>
+          <div class="mock-meta">
+            <span>Créée le<br><b>26/09/2026</b></span>
+            <span>Envoi multiple<br><b>Non</b></span>
+            <span class="mock-code anim-pulse">Code<br><b>ABCDEF123</b> <i>⧉</i></span>
+          </div>
+        </div>
+        <div class="mock-tabs">
+          <span class="active">Activité</span><span>Résultats (0)</span><span>Analyse</span><span>Paramètres</span>
+        </div>
+        <p class="mock-small mock-empty">Aucun participant pour le moment.</p>
+      </div>
+      <span class="tap" style="--x:86%;--y:30%;--delay:1.2s"></span>
+    </div>
+    <button type="button" class="btn btn-ghost replay" hidden>↻ Revoir l'animation</button>
+
+    <div class="tip">
+      <p class="tip-title">💡 Le retrouver plus tard</p>
+      <p>Onglet <strong>Campagnes</strong> : le code est affiché dans la liste, à côté de chaque campagne. Le bouton ⧉ le copie dans le presse-papiers.</p>
+    </div>
+  </section>
+
+  <!-- ÉTAPE 10 : DIFFUSER AUX ÉLÈVES -->
+  <section class="step" id="etape-10" data-chapitre="3 · Diffuser et suivre">
+    <h2>Donner le code aux élèves</h2>
+    <p>Écrivez le code au tableau ou envoyez-le par la messagerie MBN. Voici ce que font les élèves.</p>
+
+    <div class="paths">
+      <article class="path path-main">
+        <h3>Via MBN <span class="chip chip-green">recommandé</span></h3>
+        <ol>
+          <li>Se connecter à <strong>MBN</strong> (Mon Bureau Numérique).</li>
+          <li>Ouvrir le <strong>Médiacentre</strong> et cliquer sur <strong>Pix</strong>. La connexion à Pix est automatique.</li>
+          <li>Cliquer sur <strong>« J'ai un code »</strong>.</li>
+          <li>Saisir le code, puis <strong>« C'est parti ! »</strong>.</li>
+        </ol>
+      </article>
+      <article class="path">
+        <h3>Via pix.fr</h3>
+        <ol>
+          <li>Aller sur <strong>pix.fr</strong> et cliquer sur <strong>« J'ai un code »</strong>.</li>
+          <li>Saisir le code.</li>
+          <li>Se connecter avec ses identifiants Pix (créés lors de la première connexion via MBN).</li>
+        </ol>
+      </article>
+    </div>
+
+    <div class="mock mock-student" data-anim>
+      <div class="mock-pix">
+        <div class="mock-pix-logo">pix</div>
+        <p class="mock-small">Saisissez votre code</p>
+        <span class="mock-input mock-input-code anim-type" data-text="ABCDEF123"><i class="typed"></i></span>
+        <span class="mock-btn anim-highlight" style="--delay:1.8s">C'est parti !</span>
+      </div>
+      <span class="tap" style="--x:50%;--y:80%;--delay:2s"></span>
+    </div>
+    <button type="button" class="btn btn-ghost replay" hidden>↻ Revoir l'animation</button>
+
+    <div class="tip">
+      <p class="tip-title">⚠️ Si un élève ne voit pas Pix dans le Médiacentre</p>
+      <p>La ressource ne lui a pas été affectée (fréquent pour un élève arrivé en cours d'année). Signalez-le au référent numérique.</p>
+    </div>
+  </section>
+
+  <!-- ÉTAPE 11 : SUIVRE -->
+  <section class="step" id="etape-11" data-chapitre="3 · Diffuser et suivre">
+    <h2>Suivre l'activité et les résultats</h2>
+    <p>Sur la page de la campagne, quatre onglets. Les élèves apparaissent dès qu'ils ont saisi le code.</p>
+
+    <div class="mock" data-anim>
+      <div class="mock-campaign">
+        <div class="mock-tabs">
+          <span class="active">Activité</span><span>Résultats (2)</span><span>Analyse</span><span>Paramètres</span>
+        </div>
+        <div class="mock-table">
+          <div class="mock-tr mock-th"><span>Élève</span><span>Classe</span><span>Statut</span></div>
+          <div class="mock-tr anim-pop" style="--i:1"><span>Ambre B.</span><span>4A</span><span class="st st-done">Résultats reçus</span></div>
+          <div class="mock-tr anim-pop" style="--i:2"><span>Ilyes K.</span><span>4A</span><span class="st st-done">Résultats reçus</span></div>
+          <div class="mock-tr anim-pop" style="--i:3"><span>Lina M.</span><span>4A</span><span class="st st-wip">En cours</span></div>
+          <div class="mock-tr anim-pop" style="--i:4"><span>Noah T.</span><span>4B</span><span class="st st-todo">Démarré</span></div>
+        </div>
+        <span class="mock-btn mock-btn-sm">Exporter les résultats (.csv)</span>
+      </div>
+    </div>
+    <button type="button" class="btn btn-ghost replay" hidden>↻ Revoir l'animation</button>
+
+    <ul class="checklist compact">
+      <li><strong>Activité</strong> : qui a commencé, qui a terminé. Filtrable par classe.</li>
+      <li><strong>Résultats</strong> : le score de chaque élève par compétence, une fois ses résultats envoyés.</li>
+      <li><strong>Analyse</strong> : les sujets réussis ou en difficulté pour tout le groupe, avec des tutoriels à proposer.</li>
+      <li><strong>Paramètres</strong> : modifier le nom, <strong>dupliquer</strong> la campagne, ou l'<strong>archiver</strong> en fin d'année.</li>
+    </ul>
+    <div class="tip">
+      <p class="tip-title">💡 Une campagne pour plusieurs classes</p>
+      <p>Inutile de créer une campagne par classe : donnez le même code à vos 4 classes de 4e et filtrez par classe dans « Activité ».</p>
+    </div>
+  </section>
+
+  <!-- ÉTAPE 12 : FIN -->
+  <section class="step step-end" id="etape-12" data-chapitre="Récapitulatif">
+    <h2>C'est tout !</h2>
+    <p>En résumé, créer une campagne Pix, c'est :</p>
+    <ol class="recap">
+      <li>orga.pix.fr → <strong>Nouvelle campagne</strong></li>
+      <li>Objectif : <strong>Évaluer les participants</strong></li>
+      <li>Catalogue → choisir un parcours <strong>[CLG]</strong> → <strong>Sélectionner</strong></li>
+      <li>Nom de la campagne → <strong>Créer la campagne</strong></li>
+      <li>Donner le <strong>code</strong> aux élèves (MBN → Médiacentre → Pix → J'ai un code)</li>
+      <li>Suivre dans <strong>Activité</strong> et <strong>Résultats</strong></li>
+    </ol>
+
+    <h3>Pour aller plus loin</h3>
+    <ul class="links">
+      <li><a href="https://orga.pix.fr" target="_blank" rel="noopener">Pix Orga</a> : votre espace enseignant.</li>
+      <li><a href="https://pix.fr/support/" target="_blank" rel="noopener">Centre d'aide Pix</a> : la documentation officielle, écran par écran.</li>
+      <li><a href="https://cloud.pix.fr/s/j7aA5BNDQRqamBE" target="_blank" rel="noopener">Guide Pix Orga (septembre 2026)</a> : le guide complet en PDF.</li>
+    </ul>
+    <p class="contact">Une question, un élève qui ne voit pas Pix, une classe à importer ? Le référent numérique du collège est là pour ça.</p>
+    <div class="end-actions">
+      <a class="btn btn-primary" href="#etape-1">Revenir au début</a>
+      <a class="btn btn-ghost" href="affiche.html">Affiche QR code à imprimer</a>
+    </div>
+  </section>
+
+</main>
+
+<nav class="bottombar" aria-label="Navigation entre les étapes">
+  <button type="button" class="btn btn-ghost" id="btn-prev">‹ Précédent</button>
+  <ol class="dots" id="dots" aria-hidden="true"></ol>
+  <button type="button" class="btn btn-primary" id="btn-next">Suivant ›</button>
+</nav>
+
+<dialog id="sommaire" aria-labelledby="sommaire-titre">
+  <div class="dialog-head">
+    <h2 id="sommaire-titre">Sommaire</h2>
+    <button type="button" class="icon-btn" id="btn-close-sommaire" aria-label="Fermer le sommaire">✕</button>
+  </div>
+  <ol id="sommaire-liste"></ol>
+  <p class="version">Tutoriel mis à jour le 26 septembre 2026 · interface Pix Orga rentrée 2026.<br>Pix est une marque du GIP Pix ; ce tutoriel est une ressource interne du collège.</p>
+</dialog>
+
+<script src="js/app.js"></script>
+</body>
+</html>
