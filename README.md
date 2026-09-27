@@ -67,4 +67,4 @@ GitHub Pages redéploie la page en une à deux minutes.
 ## Mise à jour annuelle
 
 Pix Orga évolue chaque rentrée. Vérifier en septembre : les libellés des boutons, les dates du
-calendrier (écrans 2 et 12, affiche) et la mention de version dans le sommaire.
+calendrier et qui fait quoi (écran 2, affiche) et la mention de version dans le sommaire.

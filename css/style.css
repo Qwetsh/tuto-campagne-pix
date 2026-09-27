@@ -156,6 +156,8 @@ ul, ol { padding-left: 1.3em; }
 }
 .lead { font-size: 1.1rem; color: var(--muted); }
 .cover-meta { list-style: none; padding: 0; margin: 20px 0; color: var(--muted); font-size: .95rem; }
+body.on-cover { padding-bottom: 24px; }
+body.on-cover .bottombar { display: none; }
 .cover-meta li { margin: 4px 0; }
 .cover-chapters { display: grid; gap: 8px; margin: 20px 0 28px; }
 .cover-chapters a {
@@ -190,6 +192,39 @@ ul, ol { padding-left: 1.3em; }
 }
 .checklist.compact li { padding: 10px 12px 10px 40px; font-size: .95rem; }
 .checklist.compact li::before { top: 10px; left: 10px; }
+
+/* Bouton mail dans la liste de contrôle */
+.btn-mail { display: inline-block; margin-top: 10px; font-size: .9rem; padding: 8px 14px; }
+
+/* Calendrier : frise verticale */
+.calendar-title { margin: 20px 0 10px; font-size: 1.05rem; }
+.timeline { list-style: none; padding: 0 0 0 26px; margin: 0 0 16px; position: relative; }
+.timeline::before {
+  content: ""; position: absolute; left: 8px; top: 10px; bottom: 10px; width: 2px;
+  background: var(--border); border-radius: 2px;
+}
+.tl {
+  position: relative; display: grid; gap: 4px; margin: 0 0 10px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 12px 14px;
+}
+.tl::before {
+  content: ""; position: absolute; left: -24px; top: 16px; width: 14px; height: 14px;
+  border-radius: 50%; background: var(--surface); border: 3px solid var(--muted); box-sizing: border-box;
+}
+.tl-when { font-size: .8rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .03em; }
+.tl-what { font-size: .95rem; }
+.tl-tag {
+  justify-self: start; border-radius: 999px; padding: 3px 10px;
+  font-size: .78rem; font-weight: 700; background: var(--tip-bg); color: var(--muted);
+}
+.tl-done::before { border-color: var(--green); background: var(--green); }
+.tl-done .tl-tag { background: var(--green-bg); color: var(--green); }
+.tl-you { border-color: var(--accent); box-shadow: var(--shadow); }
+.tl-you::before { border-color: var(--accent); background: var(--accent); box-shadow: 0 0 0 4px var(--tip-bg); }
+.tl-you .tl-tag { background: var(--accent); color: #fff; }
+.tl-ref::before { border-color: var(--indigo); }
+.tl-info { opacity: .85; }
 
 /* Encarts */
 .tip {
@@ -311,6 +346,8 @@ dialog::backdrop { background: rgba(20, 22, 42, .55); }
 .mock-input { overflow: hidden; }
 .mock-input .typed { font-style: normal; white-space: nowrap; }
 .mock-input-code { text-align: center; font-size: 1.2rem; letter-spacing: .12em; font-weight: 700; }
+.mock-search { display: flex; align-items: center; gap: 6px; }
+.mock-search svg { width: 14px; height: 14px; flex: none; fill: none; stroke: var(--m-muted); stroke-width: 2; stroke-linecap: round; }
 
 .mock-radio { display: flex; align-items: center; gap: 8px; padding: 4px 0; }
 .radio {

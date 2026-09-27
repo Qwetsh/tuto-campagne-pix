@@ -7,7 +7,7 @@
   <title>Affiche QR code</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <style>
-    :root { --accent: #6a4ed8; --indigo: #5b6fd8; --text: #1f2340; --muted: #5a5f7d; }
+    :root { --accent: #6a4ed8; --indigo: #5b6fd8; --text: #1f2340; --muted: #5a5f7d; --soft: #eef0fb; --line: #dfe2f1; --green: #1e8a4c; --green-bg: #e3f6ea; }
     * { box-sizing: border-box; }
     body {
       margin: 0; background: #e9ebf5; color: var(--text);
@@ -20,27 +20,59 @@
       border: 1px solid var(--accent); background: #fff; color: var(--accent); text-decoration: none;
     }
     .toolbar button { background: var(--accent); color: #fff; }
+
     .page {
       width: 100%; max-width: 210mm; min-height: 297mm; background: #fff;
-      box-shadow: 0 20px 60px rgba(31,35,64,.18); padding: 18mm 16mm;
-      display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6mm;
+      box-shadow: 0 20px 60px rgba(31,35,64,.18); padding: 14mm 14mm 12mm;
+      display: flex; flex-direction: column; gap: 6mm;
     }
-    .band { align-self: stretch; background: var(--indigo); color: #fff; border-radius: 12px; padding: 8mm 6mm; }
-    .band h1 { margin: 0; font-size: 26pt; line-height: 1.15; }
-    .band p { margin: 3mm 0 0; font-size: 12pt; opacity: .95; }
-    .qr { width: min(95mm, 70vw); height: auto; aspect-ratio: 1; }
+    .band { background: var(--indigo); color: #fff; border-radius: 12px; padding: 7mm 8mm; text-align: center; }
+    .band h1 { margin: 0; font-size: 25pt; line-height: 1.15; }
+    .band p { margin: 2.5mm 0 0; font-size: 11.5pt; opacity: .95; }
+
+    /* Bloc QR : code à gauche, mode d'emploi à droite */
+    .scan { display: grid; grid-template-columns: 62mm 1fr; gap: 8mm; align-items: center; }
+    .qr { width: 62mm; aspect-ratio: 1; border: 1px solid var(--line); border-radius: 10px; padding: 3mm; }
     .qr img { width: 100%; height: 100%; display: block; }
-    .url { font-size: 13pt; word-break: break-all; margin: 0; }
+    .scan-text h2 { margin: 0 0 2mm; font-size: 15pt; }
+    .scan-text p { margin: 0 0 2mm; font-size: 11pt; color: var(--muted); line-height: 1.4; }
+    .url { font-size: 11.5pt; word-break: break-all; }
     .url a { color: var(--accent); text-decoration: none; font-weight: 700; }
-    .how { font-size: 12pt; color: var(--muted); margin: 0; max-width: 150mm; }
-    ol { text-align: left; font-size: 12pt; margin: 0; padding-left: 1.4em; line-height: 1.5; }
-    .foot { margin-top: auto; font-size: 9.5pt; color: var(--muted); }
+
+    /* Qui fait quoi cette année */
+    .who { background: var(--soft); border-radius: 12px; padding: 5mm 6mm; }
+    .who h2 { margin: 0 0 3mm; font-size: 13pt; }
+    .who ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 2.5mm; }
+    .who li { display: grid; grid-template-columns: 34mm 1fr; gap: 4mm; align-items: start; font-size: 10.5pt; line-height: 1.35; }
+    .tag { display: inline-block; border-radius: 999px; padding: 1mm 3mm; font-size: 9pt; font-weight: 700; text-align: center; white-space: nowrap; }
+    .tag-done { background: var(--green-bg); color: var(--green); }
+    .tag-you { background: var(--accent); color: #fff; }
+    .tag-ref { background: #fff; color: var(--indigo); border: 1px solid var(--indigo); }
+    .tag-info { background: #fff; color: var(--muted); border: 1px solid var(--line); }
+
+    /* Les étapes */
+    .steps h2 { margin: 0 0 3mm; font-size: 13pt; }
+    .steps ol { margin: 0; padding: 0; list-style: none; counter-reset: etape; display: grid; gap: 2mm; }
+    .steps li { counter-increment: etape; display: grid; grid-template-columns: 8mm 1fr; gap: 3mm; align-items: baseline; font-size: 11pt; line-height: 1.4; }
+    .steps li::before {
+      content: counter(etape); display: inline-grid; place-items: center; width: 7mm; height: 7mm; border-radius: 50%;
+      background: var(--accent); color: #fff; font-weight: 700; font-size: 10pt; align-self: center;
+    }
+    .foot { margin-top: auto; font-size: 10pt; color: var(--muted); text-align: center; line-height: 1.45; }
+    .foot b { color: var(--text); }
+
+    @media (max-width: 600px) {
+      .scan { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+      .who li { grid-template-columns: 1fr; gap: 1mm; }
+      .tag { justify-self: start; }
+    }
     @media print {
       @page { size: A4 portrait; margin: 0; }
       body { background: #fff; padding: 0; display: block; }
       .toolbar { display: none; }
       .page { box-shadow: none; width: 210mm; height: 297mm; min-height: 0; max-width: none; }
-      .qr { width: 95mm; }
+      .scan { grid-template-columns: 62mm 1fr; text-align: left; }
+      .who li { grid-template-columns: 34mm 1fr; }
     }
   </style>
 </head>
@@ -53,22 +85,40 @@
   <div class="page">
     <div class="band">
       <h1>Créer une campagne Pix<br>en 5 minutes</h1>
-      <p>Tutoriel pas à pas sur votre téléphone · interface Pix Orga rentrée 2026</p>
+      <p>Tutoriel pas à pas, écran par écran · interface Pix Orga rentrée 2026</p>
     </div>
 
-    <p class="how">Scannez le QR code avec l'appareil photo de votre téléphone</p>
-    <div class="qr"><img src="assets/qr.svg" alt="QR code vers le tutoriel"></div>
-    <p class="url"><a href="https://qwetsh.github.io/tuto-campagne-pix/">qwetsh.github.io/tuto-campagne-pix</a></p>
+    <div class="scan">
+      <div class="qr"><img src="assets/qr.svg" alt="QR code vers le tutoriel"></div>
+      <div class="scan-text">
+        <h2>Scannez, c'est parti</h2>
+        <p>Pointez l'appareil photo de votre téléphone sur le QR code, ou tapez l'adresse sur l'ordinateur de la salle des profs.</p>
+        <p class="url"><a href="https://qwetsh.github.io/tuto-campagne-pix/">qwetsh.github.io/tuto-campagne-pix</a></p>
+      </div>
+    </div>
 
-    <ol>
-      <li>Se connecter sur <strong>orga.pix.fr</strong> → <strong>Nouvelle campagne</strong></li>
-      <li>Objectif : <strong>Évaluer les participants</strong></li>
-      <li>Choisir un parcours <strong>[CLG]</strong> dans le catalogue</li>
-      <li>Nommer la campagne → <strong>Créer</strong></li>
-      <li>Donner le <strong>code</strong> aux élèves (MBN → Médiacentre → Pix → « J'ai un code »)</li>
-    </ol>
+    <div class="who">
+      <h2>Pix au collège en 2026-2027 : qui fait quoi ?</h2>
+      <ul>
+        <li><span class="tag tag-done">Déjà en place</span><span><b>Parcours de rentrée</b> 5e, 4e, 3e, à faire passer avant le 17 octobre 2026.</span></li>
+        <li><span class="tag tag-you">À vous de jouer</span><span><b>Parcours par domaine</b> (SVT, Maths, Français, Techno…) dans votre discipline : c'est ce que ce tutoriel vous apprend à créer.</span></li>
+        <li><span class="tag tag-ref">Référent numérique</span><span><b>Parcours IA</b> obligatoires en 4e, pris en charge par le référent.</span></li>
+        <li><span class="tag tag-info">15 mars – 11 juin 2027</span><span><b>Certification Pix</b> des élèves de 3e.</span></li>
+      </ul>
+    </div>
 
-    <p class="foot">Parcours de rentrée 5e à 3e avant le 17 octobre 2026 · Certification 3e du 15 mars au 11 juin 2027<br>Questions : le référent numérique du collège</p>
+    <div class="steps">
+      <h2>La campagne en 5 étapes</h2>
+      <ol>
+        <li><span>Se connecter sur <b>orga.pix.fr</b> avec son adresse académique et son mot de passe (« Mot de passe oublié » si besoin), puis <b>Nouvelle campagne</b>.</span></li>
+        <li><span>Objectif : <b>Évaluer les participants</b>.</span></li>
+        <li><span>Choisir un parcours <b>[CLG]</b> dans le catalogue, puis <b>Sélectionner ce parcours</b>.</span></li>
+        <li><span>Nommer la campagne, puis <b>Créer la campagne</b>.</span></li>
+        <li><span>Donner le <b>code</b> aux élèves : MBN, Médiacentre, Pix, « J'ai un code ».</span></li>
+      </ol>
+    </div>
+
+    <p class="foot">Pas encore d'accès à Pix Orga ? L'invitation arrive sur votre adresse académique.<br>Demandez-la à <b>thomas.charles@ac-nancy-metz.fr</b> (référent numérique), qui répond aussi à toute question Pix.</p>
   </div>
 </body>
 </html>

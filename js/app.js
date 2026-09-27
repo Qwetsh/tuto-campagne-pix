@@ -99,6 +99,7 @@
     chapitreEl.textContent = step.getAttribute('data-chapitre') || 'Tutoriel';
     compteurEl.textContent = (index + 1) + ' / ' + total;
     btnPrev.disabled = index === 0;
+    document.body.classList.toggle('on-cover', index === 0);
     btnNext.disabled = index === total - 1;
     btnNext.textContent = index === total - 1 ? 'Terminé' : 'Suivant ›';
 
